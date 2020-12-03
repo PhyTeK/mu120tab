@@ -20,7 +20,9 @@ import psycopg2.extensions
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print('BASE_DIR=',BASE_DIR)
+
+
+
 #dotenv_file= os.path.join(BASE_DIR, '.env')
 
 #if os.path.isfile(dotenv_file):
@@ -31,7 +33,8 @@ print('BASE_DIR=',BASE_DIR)
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'f557wk)rd8_2i!yhgwmyu!ucu2k8=ce0!(df43233%+g_3((-)'
+#SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -102,6 +105,19 @@ WSGI_APPLICATION = 'mu.wsgi.application'
 # }
 
 
+# In developpment using local postgresql
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': "mu.db",
+        'USER': 'phimar',
+        'PASSWORD': 'Pas2pdtc',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
 
 
 # Password validation
@@ -163,7 +179,7 @@ STATICFILES_DIRS = (
 
 django_heroku.settings(locals())
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+#db_from_env = dj_database_url.config(conn_max_age=600)
+#DATABASES['default'].update(db_from_env)
 
 
