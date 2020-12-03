@@ -166,10 +166,4 @@ django_heroku.settings(locals())
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
-#options=DATABASES['default'].get('OPTIONS',{})
 
-ENCRYPT_KEY = b'nLSOyfzWTyEPvkkkKIK5n1jXc2N1IwkV0RvfMTXWbC0='
-options.pop('sslmode',None)
-
-
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
