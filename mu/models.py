@@ -104,9 +104,10 @@ class Results(models.Model):
         klasser = models.CharField(max_length=2,
                                    choices=CLASSES,
                                    default=("1a","1a"))
+        test = models.CharField(max_length=2,default='a')
         class Meta:
         
-            ordering = ['name','klasser']
+            ordering = ['name']
 
             def __str__(self):
                 return self.klasser
