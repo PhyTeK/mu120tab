@@ -111,13 +111,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': "mu.db",
         'USER': 'phimar',
-        'PASSWORD': 'Pas2pdtc',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
 
 
+# In production
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -179,7 +182,5 @@ STATICFILES_DIRS = (
 
 django_heroku.settings(locals())
 
-#db_from_env = dj_database_url.config(conn_max_age=600)
-#DATABASES['default'].update(db_from_env)
 
 
