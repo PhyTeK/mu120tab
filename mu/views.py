@@ -55,8 +55,8 @@ def TeachView(request):
             klasser = dicGet['klasser']
             week = dicGet['weeks']
         except:
-            klasser = '??'
-            week = 00
+            klasser = '1a'
+            week = 49
             
         elever = studs.filter(klass=klasser)
         
