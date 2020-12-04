@@ -35,7 +35,7 @@ def findstudid(name,klass):
 
 
 
-@login_required
+#@login_required
 def TeachView(request):
     mults = Multi.objects.all()
     studs = Stud.objects.all()
