@@ -36,7 +36,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f557wk)rd8_2i!yhgwmyu!ucu2k8=ce0!(df43233%+g_3((-)'
 #xsSECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1','mu120tab.herokuapp.com/','77.53.56.197']
 
