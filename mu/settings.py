@@ -60,13 +60,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+
 ]
 
 ROOT_URLCONF = 'mu.urls'
@@ -109,19 +110,20 @@ WSGI_APPLICATION = 'mu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "mu.db",
-        'USER': 'phimar',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': "d3s9h7m9q8kol0",
+        'USER': 'dpszwvgcsfirwm',
+        'PASSWORD': '8b79752bf9a01d0627a658107e3a0e0723b2b625313fd68533a566f2b420c8b8',
+        'HOST': 'ec2-54-235-116-235.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
 
+WHITENOISE_USE_FINDERS = True
 
-# In production
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -161,7 +163,6 @@ USE_TZ = True
 
 #STATIC_URL = '/static/'
 
-# Configure Django App for Heroku.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 

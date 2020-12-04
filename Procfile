@@ -1,2 +1,3 @@
 release: python manage.py migrate
-web: gunicorn mu.wsgi —-log-file .
+web: gunicorn gettingstarted.wsgi
+web: gunicorn mu:app
