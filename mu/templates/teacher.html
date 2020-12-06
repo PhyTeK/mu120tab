@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <style>
+      .content{
+	  max-width: 500px;
+	  margin: auto;
+	  background: white;
+	  padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action ="" method ='get'>
+      {% csrf_token %}
+
+      {{ form.klasser }}
+      {{ form.weeks }}
+
+      {{ weeks }}
+
+      <center>      
+      <table border="1">
+	<th>Namn</th>
+	<th>Klasser</th>
+	<th>Studid</th>
+	<th>Vecka</th>
+	<th>Korrekta</th>
+	<th>Fel</th>
+	{% for test in tests %}
+	<tr>  
+	  <td>{{ test.studid.name }} </td>
+	  <td>{{ test.studid.klass }}</td>
+	  <td>{{ test.studid.studid }}</td>
+	  <td>{{ test.week }}</td>
+	  <td>{{ test.correct }}</td>
+	  <td>{{ test.errors }}</td>
+	</tr>
+
+	{% endfor %}
+
+      </table>
+      </br>
+
+      <input  type="submit" value = "Skicka">
+      </center>
+
+
+    </form>
+    <p>Week: {{ week }} </p>
+    <p>Elever i klass: {{klasser}}</p>
+    {% for e in elever %}
+    <p>{{ e.name }}, {{ e.studid }}, {{e.klass}}</p>
+    {% endfor %}
+
+    
+  </body>
+</html>

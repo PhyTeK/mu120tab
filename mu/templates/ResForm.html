@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <h1>Resultat</h1>
+    <p>Namn: {{ name }}</p>
+    <p>Klass: {{ klass }}</p>
+    <p>
+      Du gjorde testet i {{ minutes}} minuter och {{ seconds }} sekunder. Du hade {{ correct }} korrekta svar, och {{ errors }} fel.</p>
+    <p>Du behöver repetera följande multiplikation som du hade fel:
+    </p>
+    {% for f in ers %}
+    <li>{{ f }}</li>
+    {% endfor %}
+
+  </body>
+</html>
