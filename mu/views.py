@@ -28,24 +28,21 @@ def findstudid(name,klass):
     if(stud.count() > 0):
         studid = stud[0].studid
 
-        print('Name: {}, Studid: {}\n'.format(name,studid))
+        #print('Name: {}, Studid: {}\n'.format(name,studid))
         return studid
     else:
         return None
 
 
 
-#@login_required
+@login_required
 def TeachView(request):
     mults = Multi.objects.all()
     studs = Stud.objects.all()
     results = Results.objects.all()
-    # Find all students in a given class for a given test
-
-    # Find the best result for all student in a given class
     
     if (request.method == 'POST'):
-        print("method is POST!?")
+        
         return HttpResponseRedirect('/mu/teacher/',context)
 
     elif (request.method == 'GET'):
@@ -127,8 +124,6 @@ def StudIn(request):
             studid = findstudid(name,klass)
 
 
-            #print('spass:',spass)
-            #studform.save()
             # Find the name in db and return the corresponing studid
 
             if(studid is None):
@@ -173,7 +168,7 @@ def MuTest(request):
     week = int(datetime.datetime.now().isocalendar()[1])
 
 
-    print('Name: {}, Klass: {}, studid: {}\n'.format(name,klass,studid))
+    #print('Name: {}, Klass: {}, studid: {}\n'.format(name,klass,studid))
 
     if request.method == 'POST':
         muform = MuForm(request.POST)
@@ -184,10 +179,10 @@ def MuTest(request):
             end = end.strftime("%H:%M:%S")
             end = datetime.datetime.strptime(end,"%H:%M:%S")
             
-            print('start:',start)
-            print('end: ',end)
+            #print('start:',start)
+            #print('end: ',end)
             seconds = (end-start).seconds
-            print(seconds)
+            #print(seconds)
 
             end = end.strftime("%H:%M:%S")
             start = start.strftime("%H:%M:%S")
@@ -265,7 +260,7 @@ def MuTest(request):
 
         # Update start time of the student
         #t1 = time.time()
-        print('t1_view: ',t1)
+        #print('t1_view: ',t1)
         context ={
             'form':form,
             'stud':stud,
@@ -285,12 +280,4 @@ def StudView(request):
     return HttpResponse(html,status = 200)
 
 
-def ResView(request):
-
-
-    print('{},{},{}\n'.format(name,klass,res))
-
-    html=''
-    
-    return HttpResponseRedirect()
 

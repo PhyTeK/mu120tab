@@ -7,14 +7,26 @@ p {
   margin-top: 0px;
 }
 </style>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
   </head>
-  <body>
+  <body >
+      <script>
+      function sendreset(){
+	  document.getElementById('muform').submit();
+	  document.getElementById('muform').reset();
+      }
+      </script>
+
     <script>
+
+
       var form = document.getElementById("muform");
-      
+
       // Set the date we're counting down to
-      var countDownDate = new Date().getTime()+080000;
-    
+      var countDownDate = new Date().getTime()+300000;
+      
+
       // Update the count down every 1 second
       var x = setInterval(function() {
 
@@ -38,19 +50,27 @@ p {
 	      document.getElementById("timer").innerHTML = "Tiden har gått!";
 	      document.getElementById('muform').submit();
 	      document.getElementById('muform').reset();
+	      
 
 	  }
       }, 1000);
     </script>
-
     <h2>120-Multiplikationen Test</h2>
+    <h2>Namn: {{ name }}, Klass: {{ klass }} </h2>
+
     
     <p id="timer"></p>
 
-    <h2>Namn: {{ name }}, Klass: {{ klass }} </h2>
-
-    <form id='muform' method='post'>
+    
+    
+      <form id='muform' method='post' >
       {% csrf_token %}
+
+
+<!--      <input id="form-id" onClick="sendreset()" type="submit" value = "Skicka"> -->
+      <button onClick="sendreset()" type="button">Skicka</button>
+      <p></p>
+      
       <table border="1">
 	<tr>
 	{% for field in form %}
@@ -61,15 +81,6 @@ p {
 	{% endfor %}
 	</tr>
       </table>
-      </br>
-	  <center>
-	    <input id="form-id" type="submit" value = "Skicka">
-	  </center>
-	  <script>
-            function resetfun() {
-		document.getElementById("muform").reset();
-         }
-      </script>
     </form>
   </body>
 </html>

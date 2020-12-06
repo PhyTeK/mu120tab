@@ -36,7 +36,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f557wk)rd8_2i!yhgwmyu!ucu2k8=ce0!(df43233%+g_3((-)'
 #xsSECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1','mu120tab.herokuapp.com/','77.53.56.197']
 
@@ -107,16 +107,28 @@ WSGI_APPLICATION = 'mu.wsgi.application'
 
 
 # In developpment using local postgresql
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd8hmm8cfjp26t0',
+#         'USER': 'gxpkzvpjfrtomn',
+#         'PASSWORD': 'f49ce9403ec3d855ceccfd8384655d68f5e8e97e45a10625f9c36fc8c286893c',
+#         'HOST': 'ec2-54-247-71-245.eu-west-1.compute.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8hmm8cfjp26t0',
-        'USER': 'gxpkzvpjfrtomn',
-        'PASSWORD': 'f49ce9403ec3d855ceccfd8384655d68f5e8e97e45a10625f9c36fc8c286893c',
-        'HOST': 'ec2-54-247-71-245.eu-west-1.compute.amazonaws.com',
+        'NAME': 'mu.db',
+        'USER': 'phimar',
+        'PASSWORD': 'Pas2pdtc',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
 
 WHITENOISE_USE_FINDERS = True
 

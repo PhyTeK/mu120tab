@@ -16,10 +16,8 @@
 
       {{ form.klasser }}
       {{ form.weeks }}
-
-      {{ weeks }}
-
-      <center>      
+      <input  type="submit" value = "Skicka">
+      <p></p>
       <table border="1">
 	<th>Namn</th>
 	<th>Klasser</th>
@@ -40,19 +38,7 @@
 	{% endfor %}
 
       </table>
-      </br>
-
-      <input  type="submit" value = "Skicka">
-      </center>
-
-
     </form>
-    <p>Week: {{ week }} </p>
-    <p>Elever i klass: {{klasser}}</p>
-    {% for e in elever %}
-    <p>{{ e.name }}, {{ e.studid }}, {{e.klass}}</p>
-    {% endfor %}
-
     
   </body>
 </html>
