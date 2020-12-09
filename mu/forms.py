@@ -1,6 +1,7 @@
 from django import forms,utils
 import time,datetime
 from .models import Stud,Multi,Results
+from .myClasses import Choices
 
 class StartForm(forms.ModelForm):
     name = forms.CharField(required=True,initial='',label='')
@@ -14,11 +15,11 @@ class StartForm(forms.ModelForm):
     
 class TeachForm(forms.ModelForm):
 
-    WEEKS = [('47','47'),('48','48'),('49','49'),('50','50')]
-    #name = forms.CharField(required=True,initial='hi',label='name')
-    klasser = forms.ChoiceField(label='Klass',choices = Results.CLASSES,widget=forms.Select)
-    weeks = forms.ChoiceField(label='Vecka',choices = WEEKS,widget=forms.Select)
+    klasser = forms.ChoiceField(label='Klass',choices = Choices.klasser,widget=forms.Select)
+    weeks = forms.ChoiceField(label='Vecka',choices = Choices.weeks,widget=forms.Select)
 
+    
+    
     class Meta:
         model = Results
         fields = ['klasser']

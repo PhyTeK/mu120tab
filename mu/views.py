@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from .models import Stud,Multi,Results
 from .forms import MuForm,ResForm,StudForm,StartForm,TeachForm
 from django.views.decorators.csrf import csrf_exempt
+from .myClasses import Choices
 
 t1 = time.time()
 
@@ -40,6 +41,44 @@ def TeachView(request):
     mults = Multi.objects.all()
     studs = Stud.objects.all()
     results = Results.objects.all()
+    klist = []
+    wlist = []
+    klasser = []
+    weeks = []
+
+    # Find all klasser in order
+    # Warning with lower upper cases!!
+    
+    for stud in studs:
+        k = stud.klass
+        try:
+            klist.index(k)
+        except:
+            klist.append(k)
+            
+    klist.sort()
+
+    for k in klist:
+        klasser.append("('{}','{}')".format(k,k))
+
+    print(klasser)
+
+    for test in mults:
+        w = test.week
+        try:
+            wlist.index(w)
+        except:
+          wlist.append(w)
+          
+    wlist.sort()
+
+    for w in wlist:
+        weeks.append("('{}','{}')".format(w,w))
+    print(weeks)
+    
+    #Choices.klasser.append("('{}','{}')".format(k,k))
+    #Choices.weeks.append("('{}','{}')".format(w,w))
+
     
     if (request.method == 'POST'):
         
@@ -61,8 +100,9 @@ def TeachView(request):
         for e in elever:
             tmp = tester.union(mults.filter(studid=e.studid,week=week),all=False)
             
-        tester = tmp
-                
+        tester = tmp.all().order_by('studid_id','date','correct')
+        
+         
         context = {
             'form':form,
             'studs':studs,
@@ -166,12 +206,16 @@ def MuTest(request):
     start = datetime.datetime.strptime(start,"%H:%M:%S")
     
     week = int(datetime.datetime.now().isocalendar()[1])
-
-
+    #form = MuForm()
     #print('Name: {}, Klass: {}, studid: {}\n'.format(name,klass,studid))
+    
+    #pDict = form.fields.copy()
+    #print(pDict)
 
-    if request.method == 'POST':
+    if (request.method == 'POST'):
+
         muform = MuForm(request.POST)
+
 
         if muform.is_valid():
             # We need year 1900 fr both start and end times
@@ -229,7 +273,8 @@ def MuTest(request):
             #muform.save()
             
             muform = MuForm() # Clear form to avoid student back corrections
-            
+            #response.set_cookie('studid','')
+
             context = {
                 'form':muform,
                 'stud':stud,
@@ -247,8 +292,7 @@ def MuTest(request):
         else:
             return HttpResponse('Form unvalid!')
          
-    else:
-        form = MuForm()
+    elif (request.method == 'GET'):
 
         # Start timer
         #time.tzset()
@@ -261,14 +305,17 @@ def MuTest(request):
         # Update start time of the student
         #t1 = time.time()
         #print('t1_view: ',t1)
+
+        muform=MuForm()
+        
         context ={
-            'form':form,
+            'form':muform,
             'stud':stud,
             'name': name,
             'klass':klass,
             'studid':studid,
         }
-        return render(request, 'MuForm.html', context)
+        return render(request,'MuForm.html', context)
 
 def StudView(request):
     mus = Stud.objects.all()

@@ -1,17 +1,25 @@
+{% load static %}
 <html>
   <head>
-<style>
-p {
-  text-align: left;
-  font-size: 20px;
-  margin-top: 0px;
-}
-</style>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
+    <title>Multiplikationen test</title>
+    <style>
+      p {
+	  text-align: left;
+	  font-size: 20px;
+	  margin-top: 0px;
+      }
+    </style>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <script>
+      function clearInp() {
+	  document.getElementsByTagName("input").value = "";
+      }
+      </script>
   </head>
-  <body >
-      <script>
+  <body onLoad="resetform()">
+
+
+    <script>
       function sendreset(){
 	  document.getElementById('muform').submit();
 	  document.getElementById('muform').reset();
@@ -19,7 +27,6 @@ p {
       </script>
 
     <script>
-
 
       var form = document.getElementById("muform");
 
@@ -55,17 +62,17 @@ p {
 	  }
       }, 1000);
     </script>
+
+
     <h2>120-Multiplikationen Test</h2>
     <h2>Namn: {{ name }}, Klass: {{ klass }} </h2>
 
     
     <p id="timer"></p>
-
     
     
       <form id='muform' method='post' >
       {% csrf_token %}
-
 
 <!--      <input id="form-id" onClick="sendreset()" type="submit" value = "Skicka"> -->
       <button onClick="sendreset()" type="button">Skicka</button>
@@ -82,6 +89,17 @@ p {
 	</tr>
       </table>
     </form>
+
+      <!-- <script> -->
+      <!-- 	location.reload(); -->
+      <!-- </script> -->
+
+      <script>
+	function resetform() {
+	    document.getElementById("muform").reset();
+	}
+</script>
+
   </body>
 </html>
 

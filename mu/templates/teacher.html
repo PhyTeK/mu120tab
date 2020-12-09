@@ -1,3 +1,4 @@
+{% load static %}
 <html>
   <head>
     <style>
@@ -8,6 +9,9 @@
 	  padding: 10px;
       }
     </style>
+    <title>Läraren</title>
+     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
   </head>
 
   <body>
@@ -20,10 +24,13 @@
       <p></p>
       <table border="1">
 	<th>Namn</th>
-	<th>Klasser</th>
-	<th>Studid</th>
+	<th>Klass</th>
+	<th>Id</th>
 	<th>Vecka</th>
-	<th>Korrekta</th>
+	<th>Datum</th>
+	<th>Start</th>
+	<th>Tid</th>
+	<th>Rätt</th>
 	<th>Fel</th>
 	{% for test in tests %}
 	<tr>  
@@ -31,6 +38,9 @@
 	  <td>{{ test.studid.klass }}</td>
 	  <td>{{ test.studid.studid }}</td>
 	  <td>{{ test.week }}</td>
+	  <td>{{ test.date }}</td>
+	  <td>{{ test.start }}</td>
+	  <td>{{ test.tid }}</td>
 	  <td>{{ test.correct }}</td>
 	  <td>{{ test.errors }}</td>
 	</tr>
