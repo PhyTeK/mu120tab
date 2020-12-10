@@ -3,6 +3,9 @@ import time,datetime
 from .models import Stud,Multi,Results
 from .myClasses import Choices
 
+
+
+
 class StartForm(forms.ModelForm):
     name = forms.CharField(required=True,initial='',label='')
     password = forms.CharField(required=True,initial='',label='',widget=forms.PasswordInput)
@@ -15,14 +18,23 @@ class StartForm(forms.ModelForm):
     
 class TeachForm(forms.ModelForm):
 
-    klasser = forms.ChoiceField(label='Klass',choices = Choices.klasser,widget=forms.Select)
-    weeks = forms.ChoiceField(label='Vecka',choices = Choices.weeks,widget=forms.Select)
+    def __init__(self,*args, **kwargs):
+        self.klist = kwargs.pop('klist')
+        self.wlist = kwargs.pop('wlist')
+        super(TeachForm, self).__init__(*args, **kwargs)
 
-    
+
+        self.fields['klasser'] = forms.ChoiceField(choices=tuple([(name, name) for name in self.klist]))
+        self.fields['weeks'] = forms.ChoiceField(choices=tuple([(name, name) for name in self.wlist]))
+
+        #weeks = forms.ChoiceField(label='Vecka',choices = Choices.weeks,widget=forms.Select)
+
+        klasser = forms.ChoiceField()
+        weeks = forms.ChoiceField()
     
     class Meta:
-        model = Results
-        fields = ['klasser']
+        model = Multi
+        fields = ['week']
 
 
 

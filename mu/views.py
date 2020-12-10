@@ -59,12 +59,14 @@ def TeachView(request):
     klist.sort()
 
     for k in klist:
-        klasser.append("('{}','{}')".format(k,k))
+        turt = (str(k),str(k))
+        klasser.append(turt)
 
     print(klasser)
 
     for test in mults:
         w = test.week
+        turt = (str(w),str(w))
         try:
             wlist.index(w)
         except:
@@ -73,26 +75,34 @@ def TeachView(request):
     wlist.sort()
 
     for w in wlist:
-        weeks.append("('{}','{}')".format(w,w))
+        weeks.append(turt)
     print(weeks)
     
-    #Choices.klasser.append("('{}','{}')".format(k,k))
-    #Choices.weeks.append("('{}','{}')".format(w,w))
-
+    Choices.klasser = klasser
+    Choices.weeks = weeks
+    #form = TeachForm()
+    klist,wlist
     
     if (request.method == 'POST'):
         
         return HttpResponseRedirect('/mu/teacher/',context)
 
     elif (request.method == 'GET'):
-        form = TeachForm(request.GET)
+
+        form = TeachForm(request.GET,klist=klist,wlist=wlist)
+        #form = forms.AddRatingForRound(all_round_names)
+        
         dicGet = request.GET
+
+        print('klasser in GET',Choices.klasser)
+        
         try:
             klasser = dicGet['klasser']
             week = dicGet['weeks']
         except:
-            klasser = '1a'
-            week = 49
+            klasser = klist[0]
+            week = wlist[0]
+            
             
         elever = studs.filter(klass=klasser)
         
