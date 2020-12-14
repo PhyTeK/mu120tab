@@ -15,8 +15,8 @@ import django_heroku
 import os
 import dj_database_url
 # import dotenv
-from pathlib import Path
-import psycopg2.extensions
+# from pathlib import Path
+# import psycopg2.extensions
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,14 +38,14 @@ SECRET_KEY = 'f557wk)rd8_2i!yhgwmyu!ucu2k8=ce0!(df43233%+g_3((-)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'mu120tab.herokuapp.com/',
-                 '77.53.56.197']
-
+ALLOWED_HOSTS = ['127.0.0.1', '77.53.56.197']
+# ALLOWED_HOSTS = ['*']
 SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_SAMESITE = 'None'  # Solved the problem with 'bool' lower() issue
+SESSION_COOKIE_SAMESITE = 'None'  # Solved the problem with 'bool' lower()
 CSRF_COOKIE_SECURE = True
-#CSRF_COOKIE_DOMAIN = None   # In development
-#CSRF_COOKIE_HTTPONLY = True
+
+# CSRF_COOKIE_DOMAIN = None
+# CSRF_COOKIE_HTTPONLY = True
 
 # Application definition
 
@@ -95,9 +95,9 @@ WSGI_APPLICATION = 'mu.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-#DATABASES = {}
-#db_from_env = dj_database_url.config()
-#DATABASES['default']=dj_database_url.config(conn_max_age=600)
+# DATABASES = {}
+# db_from_env = dj_database_url.config()
+# DATABASES['default']=dj_database_url.config(conn_max_age=600)
 
 # Use this in developement
 # DATABASES = {  'default': {
@@ -113,7 +113,8 @@ WSGI_APPLICATION = 'mu.wsgi.application'
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'd8hmm8cfjp26t0',
 #         'USER': 'gxpkzvpjfrtomn',
-#         'PASSWORD': 'f49ce9403ec3d855ceccfd8384655d68f5e8e97e45a10625f9c36fc8c286893c',
+#         'PASSWORD': 'f49ce9403ec3d855ceccfd8384655d68f5e8e97e45a10625
+#             f9c36fc8c286893c',
 #         'HOST': 'ec2-54-247-71-245.eu-west-1.compute.amazonaws.com',
 #         'PORT': '5432',
 #     }
@@ -182,12 +183,9 @@ STATICFILES_DIRS = (
      os.path.join(BASE_DIR, 'static'),
  )
 
-
-
 # STATICFILES_DIRS = [
 #    os.path.join(os.path.dirname(BASE_DIR), "static", "static")
 # ]
-
 # If images or other media
 # MEDIA_URL = "/media/"
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
