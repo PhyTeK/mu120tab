@@ -108,24 +108,24 @@ WSGI_APPLICATION = 'mu.wsgi.application'
 
 
 # In developpment using local postgresql
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd8hmm8cfjp26t0',
-#         'USER': 'gxpkzvpjfrtomn',
-#         'PASSWORD': 'f49ce9403ec3d855ceccfd8384655d68f5e8e97e45a10625
-#             f9c36fc8c286893c',
-#         'HOST': 'ec2-54-247-71-245.eu-west-1.compute.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd8hmm8cfjp26t0',
+        'USER': 'gxpkzvpjfrtomn',
+        'PASSWORD': 'f49ce9403ec3d855ceccfd8384655d68f5e8e97e45a10625
+            f9c36fc8c286893c',
+        'HOST': 'ec2-54-247-71-245.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'mu.db',
         'USER': 'phimar',
-        'PASSWORD': 'Pas2pdtc',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432',
     }
