@@ -14,17 +14,17 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import django_heroku
 import os
 import dj_database_url
-#import dotenv
+# import dotenv
 from pathlib import Path
 import psycopg2.extensions
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-#BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#dotenv_file= os.path.join(BASE_DIR, '.env')
+# dotenv_file= os.path.join(BASE_DIR, '.env')
 
-#if os.path.isfile(dotenv_file):
+# if os.path.isfile(dotenv_file):
 #    dotenv.load_dotenv(dotenv_file)
 
 
@@ -34,14 +34,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = 'f557wk)rd8_2i!yhgwmyu!ucu2k8=ce0!(df43233%+g_3((-)'
-#xsSECRET_KEY = os.environ.get('SECRET_KEY')
+# xsSECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','mu120tab.herokuapp.com/','77.53.56.197']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'mu120tab.herokuapp.com/',
+                 '77.53.56.197']
 
 SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_SAMESITE = 'None' # Solved the problem with 'bool' lower() issue
+SESSION_COOKIE_SAMESITE = 'None'  # Solved the problem with 'bool' lower() issue
 CSRF_COOKIE_SECURE = True
 #CSRF_COOKIE_DOMAIN = None   # In development
 #CSRF_COOKIE_HTTPONLY = True
@@ -183,16 +184,13 @@ STATICFILES_DIRS = (
 
 
 
-#STATICFILES_DIRS = [
+# STATICFILES_DIRS = [
 #    os.path.join(os.path.dirname(BASE_DIR), "static", "static")
-#]
+# ]
 
 # If images or other media
-#MEDIA_URL = "/media/"
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = "/media/"
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 django_heroku.settings(locals())
-
-
-

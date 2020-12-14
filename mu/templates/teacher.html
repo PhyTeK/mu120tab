@@ -1,4 +1,5 @@
 {% load static %}
+{% load mu_extras %}
 <html>
   <head>
     <style>
@@ -9,15 +10,12 @@
 	  padding: 10px;
       }
     </style>
-    <title>Läraren</title>
+    <title>Lärarens sida</title>
      <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-
   </head>
-
-  <body>
+  <body>    
     <form action ="" method ='get'>
       {% csrf_token %}
-
       {{ form.klasser }}
       {{ form.weeks }}
       <input  type="submit" value = "Skicka">
@@ -32,6 +30,7 @@
 	<th>Tid</th>
 	<th>Rätt</th>
 	<th>Fel</th>
+	<th>Arbeta</th>
 	{% for test in tests %}
 	<tr>  
 	  <td>{{ test.studid.name }} </td>
@@ -43,12 +42,14 @@
 	  <td>{{ test.tid }}</td>
 	  <td>{{ test.correct }}</td>
 	  <td>{{ test.errors }}</td>
+	  {% if test.errors > 0 %}
+	  {% with id=test.testid %}
+	  <td>{{ todos|getattr:id|cut:"'"|cut:"["|cut:"]"|cut:" " }}</td>
+	  {% endwith %}
+	  {% endif %}
 	</tr>
-
 	{% endfor %}
-
       </table>
     </form>
-    
   </body>
 </html>

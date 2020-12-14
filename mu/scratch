@@ -96,3 +96,11 @@ class Test(models.Model):
     {% endif %}
     {% endfor %}
     {% endwith %}
+
+        # estuds = elever[0].studid
+        print(elever.values())
+        tester = mults.filter(week=week)
+        print(tester.values())
+        for e in elever:
+            tester=tester.union(elefilter(studid_id=e.studid))
+        
